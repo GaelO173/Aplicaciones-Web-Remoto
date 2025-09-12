@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif, sans-serif;
+            background-color: #666666;
+        }
+        .login-conatiner img{
+            width: 330px;
+            height: 300px;
+            margin-bottom: 10px;
+
+        }
+        .login-conatiner{
+            background-color: #666666(21, 10, 79);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: auto auto 10px rgba(255, 255, 255, 0.1);
+            text-align: center;
+            margin-top: auto;
+            
+        }
+        input{
+            width: 200%;
+            padding: 5px;
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button{
+            width: 35%;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover{
+            background-color: #082a4f;
+        }
+        .title-container{
+            text-align:center;
+            margin-bottom: 5px;
+            color: black;
+            width: auto;
+            height: auto;
+            
+        }
+    </style>
+
+    <script>
+        function redirigir(){
+            window.location.href= "PantPrincipal.html";
+        }
+    </script>
+</head>
+<body>
+    <div class="login-conatiner">
+        <div class="title-container">
+            <h1>MedicAlarm</h1>
+        </div>
+        <img src="Logos/Logo.png" alt="Foto de perfil" style="display: block; margin: auto;">
+        <form onsubmit="redirigir(); return false;">
+            <h1><title type="submit"></title></h1>
+            <h1><button type="submit">Iniciar Sesion con Google<img src="Logos/Google.png" alt="Foto de perfil" style="display: block; margin: auto; width: 20px; height: 20px;"></button></h1>
+            <h1><button type="submit">Iniciar Sesion con Facebook<img src="Logos/Facebook.png" alt="Foto de perfil" style="display: block; margin: auto; width: 20px; height: 20px;"></button></h1>
+            <h1><button type="submit">Iniciar Sesion con tu Numero</button></h1>
+        </form>
+    </div>
+</body>
