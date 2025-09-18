@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+    <meta charset="utf-8">
+    <title>Todos al mismo tiempo</title>
+    <style>
+        html, body { height: 100%; margin: 0; }
+
+        .ventana {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 100vh;
+        }
+
+        .celda {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial;
+            color: #ffffff;
+        }
+
+        .celda-1 { background: #ffcc00; }
+        .celda-2 { background: #006eff; }
+        .celda-3 { background: #00ff7b; }
+        .celda-4 { background: #ff0000; }
+
+        .boton {
+            display: center;
+            padding: 12px 22px;
+            font-size: 16px;
+            border-radius: 8px;
+            background: #ffffff;
+            color : #000000;
+        }
+
+        #r1:checked ~ .ventana .celda-1 .boton { background: #ffcc00; color: #000000; }
+        #r2:checked ~ .ventana .celda-2 .boton { background: #006eff; color: #000000; }
+        #r3:checked ~ .ventana .celda-3 .boton { background: #00ff7b; color: #000000; }
+        #r4:checked ~ .ventana .celda-4 .boton { background: #ff0000; color: #000000; }
+
+    </style>
+    </head>
+    <body>
+
+        <input type="radio" name="selector" id="r1">
+        <input type="radio" name="selector" id="r2">
+        <input type="radio" name="selector" id="r3">
+        <input type="radio" name="selector" id="r4">
+
+        <div class="ventana">
+            <div class="celda celda-1">
+                <label for="r1" class="boton">1</label>
+            </div>
+            <div class="celda celda-2">
+                <label for="r2" class="boton">2</label>
+            </div>
+            <div class="celda celda-3">
+                <label for="r3" class="boton">3</label>
+            </div>
+            <div class="celda celda-4">
+                <label for="r4" class="boton">4</label>
+            </div>
+    </body>
+</html>

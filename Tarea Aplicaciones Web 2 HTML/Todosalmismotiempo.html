@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+    <meta charset="utf-8">
+    <title>Todos al mismo tiempo</title>
+    <style>
+        html, body { height: 100%; margin: 0; }
+
+        .ventana {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 100vh;
+        }
+
+        .celda {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial;
+            color: #ffffff;
+        }
+
+        .celda-1 { background: #ffcc00; }
+        .celda-2 { background: #006eff; }
+        .celda-3 { background: #00ff7b; }
+        .celda-4 { background: #ff0000; }
+
+        #r1:checked ~ .ventana { --active-bg: #ffcc00; --active-text: #000; }
+        #r2:checked ~ .ventana { --active-bg: #006eff; --active-text: #000; }
+        #r3:checked ~ .ventana { --active-bg: #00ff7b; --active-text: #000; }
+        #r4:checked ~ .ventana { --active-bg: #ff0000; --active-text: #000; }   
+
+        .boton {
+            display: inline-block;
+            padding: 12px 22px;
+            font-size: 16px;
+            border-radius: 8px;
+            background: var(--active-bg);
+            color: var(--active-text);
+        }
+
+    </style>
+    </head>
+    <body>
+
+        <input type="radio" name="selector" id="r1">
+        <input type="radio" name="selector" id="r2">
+        <input type="radio" name="selector" id="r3">
+        <input type="radio" name="selector" id="r4">
+
+        <div class="ventana">
+            <div class="celda celda-1">
+                <label for="r1" class="boton">1</label>
+            </div>
+            <div class="celda celda-2">
+                <label for="r2" class="boton">2</label>
+            </div>
+            <div class="celda celda-3">
+                <label for="r3" class="boton">3</label>
+            </div>
+            <div class="celda celda-4">
+                <label for="r4" class="boton">4</label>
+            </div>
+    </body>
+</html>
