@@ -17,18 +17,13 @@
             align-items: center;
             justify-content: center;
             font-family: Arial;
-            color: #ffffff;
+            color: #000000;
         }
 
         .celda-1 { background: #ffcc00; }
         .celda-2 { background: #006eff; }
         .celda-3 { background: #00ff7b; }
         .celda-4 { background: #ff0000; }
-
-        #r1:checked ~ .ventana { --active-bg: #ffcc00; --active-text: #000; }
-        #r2:checked ~ .ventana { --active-bg: #006eff; --active-text: #000; }
-        #r3:checked ~ .ventana { --active-bg: #00ff7b; --active-text: #000; }
-        #r4:checked ~ .ventana { --active-bg: #ff0000; --active-text: #000; }   
 
         .boton {
             display: inline-block;
@@ -50,16 +45,42 @@
 
         <div class="ventana">
             <div class="celda celda-1">
-                <label for="r1" class="boton">1</label>
+                <label for="r1" class="boton" id="b1">1</label>
             </div>
             <div class="celda celda-2">
-                <label for="r2" class="boton">2</label>
+                <label for="r2" class="boton" id="b2">2</label>
             </div>
             <div class="celda celda-3">
-                <label for="r3" class="boton">3</label>
+                <label for="r3" class="boton" id="b3">3</label>
             </div>
             <div class="celda celda-4">
-                <label for="r4" class="boton">4</label>
+                <label for="r4" class="boton" id="b4">4</label>
             </div>
+        </div>
+        <script>
+            const radios = document.querySelectorAll('input[type="radio"]');
+            const botones = [
+                document.getElementById('b1'),
+                document.getElementById('b2'),
+                document.getElementById('b3'),
+                document.getElementById('b4')
+            ];
+            const colores = [
+                {bg: '#ffcc00', color: '#000'},
+                {bg: '#006eff', color: '#000'},
+                {bg: '#00ff7b', color: '#000'},
+                {bg: '#ff0000', color: '#000'}
+            ];
+
+            radios.forEach((radio, idx) => {
+                radio.addEventListener('change', () => {
+                    if (radio.checked) {
+                        botones.forEach((boton) => {
+                            boton.style.background = colores[idx].bg;
+                        });
+                    }
+                });
+            });
+        </script>
     </body>
 </html>
