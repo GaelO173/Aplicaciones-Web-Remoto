@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+    <meta charset="utf-8">
+    <title>Todos al mismo tiempo</title>
+    <style>
+        html, body { height: 100%; margin: 0; }
+
+        .ventana {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 100vh;
+        }
+
+        .celda {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial;
+            color: #000000;
+        }
+
+        .celda-1 { background: #ffcc00; }
+        .celda-2 { background: #006eff; }
+        .celda-3 { background: #00ff7b; }
+        .celda-4 { background: #ff0000; }
+
+        .boton {
+            display: inline-block;
+            padding: 12px 22px;
+            font-size: 16px;
+            border-radius: 8px;
+            background: var(--active-bg);
+            color: var(--active-text);
+        }
+
+    </style>
+    </head>
+    <body>
+
+        <input type="radio" name="selector" id="r1">
+        <input type="radio" name="selector" id="r2">
+        <input type="radio" name="selector" id="r3">
+        <input type="radio" name="selector" id="r4">
+
+        <div class="ventana">
+            <div class="celda celda-1">
+                <label for="r1" class="boton" id="b1">1</label>
+            </div>
+            <div class="celda celda-2">
+                <label for="r2" class="boton" id="b2">2</label>
+            </div>
+            <div class="celda celda-3">
+                <label for="r3" class="boton" id="b3">3</label>
+            </div>
+            <div class="celda celda-4">
+                <label for="r4" class="boton" id="b4">4</label>
+            </div>
+        </div>
+        <script>
+            const radios = document.querySelectorAll('input[type="radio"]');
+            const botones = [
+                document.getElementById('b1'),
+                document.getElementById('b2'),
+                document.getElementById('b3'),
+                document.getElementById('b4')
+            ];
+            const colores = [
+                {bg: '#ffcc00', color: '#000'},
+                {bg: '#006eff', color: '#000'},
+                {bg: '#00ff7b', color: '#000'},
+                {bg: '#ff0000', color: '#000'}
+            ];
+
+            radios.forEach((radio, idx) => {
+                radio.addEventListener('change', () => {
+                    if (radio.checked) {
+                        botones.forEach((boton) => {
+                            boton.style.background = colores[idx].bg;
+                        });
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
