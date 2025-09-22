@@ -1,72 +1,120 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
     <head>
-    <meta charset="utf-8">
-    <title>Todos al mismo tiempo</title>
-    <style>
-        html, body { height: 100%; margin: 0; }
+        <meta charset="utf-8">
+        <title>UnoporUno</title>
+        <style>
+            html, body {
+                height: 100%;
+                margin: 0;
+                font-family: Arial, Helvetica, sans-serif;
+            }
 
-        .ventana {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            height: 100vh;
-        }
+            .grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr;
+                height: 100vh;
+            }
 
-        .celda {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: Arial;
-            color: #ffffff;
-        }
+            .cell {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
 
-        .celda-1 { background: #ffcc00; }
-        .celda-2 { background: #006eff; }
-        .celda-3 { background: #00ff7b; }
-        .celda-4 { background: #ff0000; }
+            .cell-1 { background: #ffcc00; }
+            .cell-2 { background: #006eff; }
+            .cell-3 { background: #00ff7b; }
+            .cell-4 { background: #ff0000; }
 
-        .boton {
-            display: center;
-            padding: 12px 22px;
-            font-size: 16px;
-            border-radius: 8px;
-            background: #ffffff;
-            color : #000000;
-        }
-        .selected {
-          background-color: yellow;
-        }
+            .inner {
+                width: 120px;
+                height: 80px;
+                background: #ffffff;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            }
 
-    </style>
+            .inner .num {
+                font-weight: 700;
+                font-size: 22px;
+                color: #000;
+            }
+        </style>
     </head>
-    <body>
-        <ul id="miLista">
-          <li>Elemento 1</li>
-          <li>Elemento 2</li>
-          <li>Elemento 3</li>
-        </ul>
 
-        <div class="ventana">
-            <div class="celda celda-1">
-                <label for="r1" class="boton">1</label>
+    <body>
+        <div class="grid">
+            <div class="cell cell-1">
+                <div class="inner"><span class="num">1</span></div>
             </div>
-            <div class="celda celda-2">
-                <label for="r2" class="boton">2</label>
+
+            <div class="cell cell-2">
+                <div class="inner"><span class="num">2</span></div>
             </div>
-            <div class="celda celda-3">
-                <label for="r3" class="boton">3</label>
+
+            <div class="cell cell-3">
+                <div class="inner"><span class="num">3</span></div>
             </div>
-            <div class="celda celda-4">
-                <label for="r4" class="boton">4</label>
+
+            <div class="cell cell-4">
+                <div class="inner"><span class="num">4</span></div>
             </div>
         </div>
+
         <script>
-            const items = document.querySelectorAll('#miLista li');
-            items.forEach(item => {
-              item.addEventListener('click', function() {
-                items.forEach(i => i.classList.remove('selected')); // Quita el color a todos
-                this.classList.add('selected'); // Agrega el color solo al seleccionado
-              });
+            const inners = document.querySelectorAll('.inner');
+
+            const getCellBg = cell => {
+                const c = getComputedStyle(cell).backgroundColor;
+                return (c && c !== 'transparent') ? c : getComputedStyle(cell.parentElement).backgroundColor;
+            };
+
+            const contrastFor = rgbStr => {
+                const m = (rgbStr || '').match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
+                if (!m) return '#000';
+                const r = +m[1], g = +m[2], b = +m[3];
+                const sr = v => (v / 255) <= 0.03928 ? (v / 255) / 12.92 : Math.pow(((v / 255) + 0.055) / 1.055, 2.4);
+                const L = 0.2126 * sr(r) + 0.7152 * sr(g) + 0.0722 * sr(b);
+                return L > 0.5 ? '#000' : '#fff';
+            };
+
+            function clearAll() {
+                inners.forEach(i => {
+                    i.classList.remove('colored');
+                    i.style.background = '';
+                    i.querySelector('.num').style.color = '#000';
+                });
+            }
+
+            inners.forEach(inner => {
+                const cell = inner.closest('.cell');
+                const cellColor = getCellBg(cell);
+
+                const setOn = () => {
+                    clearAll();
+                    inner.classList.add('colored');
+                    inner.style.background = cellColor;
+                    inner.querySelector('.num').style.color = contrastFor(cellColor);
+                };
+
+                const setOff = () => {
+                    inner.classList.remove('colored');
+                    inner.style.background = '';
+                    inner.querySelector('.num').style.color = '#000';
+                };
+
+                inner.addEventListener('click', () => (inner.classList.contains('colored') ? setOff() : setOn()));
+
+                inner.addEventListener('keydown', e => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        inner.classList.contains('colored') ? setOff() : setOn();
+                    }
+                });
             });
         </script>
     </body>
