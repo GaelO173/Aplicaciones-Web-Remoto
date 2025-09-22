@@ -16,12 +16,12 @@
         }
         /* Contenedor principal */
         .login-container {
-            background-color: #fff;
+            background-color: #ffffff;
             padding: 30px 40px;         /* Espaciado interno */
             border-radius: 10px;           /* Bordes redondeados */
             box-shadow: 0 4px 24px rgba(0,0,0,0.15); /* Sombra */
             text-align: center;      /* Centra el texto */
-            min-width: 350px;     /* Ancho mínimo */
+            min-width: 350px;     /* Ancho minimo */
         }
         /* Contenedor para el título */
         .title-container h1{
@@ -30,7 +30,7 @@
         }
         /* conf de foto de perfil */
         .logo-img {
-            width: 400px;    /* Ajusta el tamaño según lo que necesites */
+            width: 400px;    /* Ajusta el tamaño segun lo que necesites */
             height: 400px;
             display: block;     /* Asegura que la imagen se comporte como un bloque */
             margin: auto;       /* Centra la imagen horizontalmente */
@@ -38,13 +38,13 @@
         }
         /* Botones de inicio */
         button{
-            width: 80%;     
+            width: 50%;     
             padding: 10px;      /* Espaciado interno */
             background-color: black;  /* Color de fondo */
             color: white;     /* Color del texto */
             border: none;     /* Sin borde */
             border-radius: 5px;    /* Bordes redondeados */
-            cursor: pointer;   /* Cambia el cursor al pasar sobre el botón */
+            cursor: pointer;   /* Cambia el cursor al pasar sobre el boton */
             margin-top: 10px;  /* Espacio superior */
         }
 
@@ -54,19 +54,46 @@
         function redirigir(){
             window.location.href= "PantPrincipal.html";
         }
+        function redirigir2(){
+            window.location.href= "gokupelon.html";
+        }
     </script>
 </head>
 <body>
-    <div class="login-container">
-        <div class="title-container">
-            <h1></h1>
+    <div style="display: felx; align-items: center; justify-content: center; min-height: 100vh;">
+        <div style="margin-right: 30px; color: #333; font-size: 1.2em;">
+            <h1>Bienvenido a la plataforma de TecGo, tu servicio de reparacion preferido</h1>
+            <p>Inicia sesión para acceder.</p> <!-- Para definir un parrafo de texto -->
         </div>
-        <img src="Logos/Logo.jpg" alt="Foto de perfil" class="logo-img">
-        <form onsubmit="redirigir(); return false;">
-            <h1><title type="submit"></title></h1>
-            <h1><button type="submit">Iniciar Sesion con Google<img src="Logos/Google.png" alt="Foto de perfil" style="display: block; margin: auto; width: 20px; height: 20px;"></button></h1>
-            <h1><button type="submit">Iniciar Sesion con Facebook<img src="Logos/Facebook.png" alt="Foto de perfil" style="display: block; margin: auto; width: 20px; height: 20px;"></button></h1>
-            <h1><button type="submit">Iniciar Sesion con tu Numero<img src="Logos/Llamada.png" alt="Foto de perfil" style="display: block; margin: auto; width: 20px; height: 20px;"></button></h1>
-        </form>
+    <div class="login-container">
+    <div class="title-container">
+        <h1></h1>
     </div>
+    <img src="Logos/Logo.jpg" alt="Foto de perfil" class="logo-img">
+    <input type="email" placeholder="Correo Electronico" required style="width: 50%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #ccc;">
+    <input type="password" placeholder="Contraseña" required style="width: 50%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #ccc;">
+    
+    <form onsubmit="redirigir(); return false;">
+        <button type="submit">Iniciar Sesion</button>
+    </form>
+    <h1>O</h1>
+    <form onsubmit="redirigir2(); return false;">
+        <button type="submit">
+            Iniciar Sesion con Google
+            <img src="Logos/Google.png" alt="Google" style="display: inline; margin-left: 10px; width: 20px; height: 20px;">
+        </button>
+    </form>
+    <form onsubmit="redirigir2(); return false;">
+        <button type="submit">
+            Iniciar Sesion con Facebook
+            <img src="Logos/Facebook.png" alt="Facebook" style="display: inline; margin-left: 10px; width: 20px; height: 20px;">
+        </button>
+    </form>
+    <form onsubmit="redirigir2(); return false;">
+        <button type="submit">
+            Iniciar Sesion con tu Numero
+            <img src="Logos/Llamada.png" alt="Llamada" style="display: center; margin-left: 10px; width: 20px; height: 20px;">
+        </button>
+    </form>
+</div>
 </body>
